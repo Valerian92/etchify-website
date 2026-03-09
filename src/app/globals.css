@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-primary: #818cf8;
+  --color-brand-secondary: #a78bfa;
+  --color-brand-dark: #0f0d1a;
+  --color-brand-darker: #0a0812;
+  --color-brand-muted: #1a1726;
+  --color-brand-border: #2a2538;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
