@@ -3,17 +3,20 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Logo } from '@/components/ui/Logo';
-
-const NAV_LINKS = [
-  { href: '/#features', label: 'Features' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/legal', label: 'Kontakt' },
-];
+import { LanguageToggle } from '@/components/ui/LanguageToggle';
+import { useLocale } from '@/lib/LocaleProvider';
 
 const SHOPIFY_APP_URL = 'https://apps.shopify.com/etchify';
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { dict } = useLocale();
+
+  const navLinks = [
+    { href: '/#features', label: dict.nav.features },
+    { href: '/pricing', label: dict.nav.pricing },
+    { href: '/legal', label: dict.nav.contact },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/80 backdrop-blur-lg">
@@ -28,7 +31,7 @@ export function Nav() {
 
         {/* Desktop links */}
         <div className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -37,13 +40,14 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
+          <LanguageToggle />
           <a
             href={SHOPIFY_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-brand-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-secondary"
           >
-            Kostenlos starten
+            {dict.nav.cta}
           </a>
         </div>
 
@@ -66,7 +70,7 @@ export function Nav() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-brand-border px-4 pb-4 md:hidden">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -76,13 +80,16 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
+          <div className="py-3">
+            <LanguageToggle />
+          </div>
           <a
             href={SHOPIFY_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 block rounded-lg bg-brand-primary px-4 py-2 text-center text-sm font-medium"
           >
-            Kostenlos starten
+            {dict.nav.cta}
           </a>
         </div>
       )}

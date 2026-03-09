@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
+import { useLocale } from '@/lib/LocaleProvider';
 
 export function Footer() {
+  const { dict } = useLocale();
+
   return (
     <footer className="border-t border-brand-border bg-brand-darker">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -15,37 +20,37 @@ export function Footer() {
               </p>
             </div>
             <p className="mt-2 text-sm text-gray-500">
-              Gravur & Print Konfigurator für Shopify
+              {dict.footer.tagline}
             </p>
           </div>
 
           {/* Product */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Produkt
+              {dict.footer.product}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><Link href="/#features" className="text-sm text-gray-500 hover:text-white">Features</Link></li>
-              <li><Link href="/pricing" className="text-sm text-gray-500 hover:text-white">Pricing</Link></li>
+              <li><Link href="/#features" className="text-sm text-gray-500 hover:text-white">{dict.nav.features}</Link></li>
+              <li><Link href="/pricing" className="text-sm text-gray-500 hover:text-white">{dict.nav.pricing}</Link></li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Rechtliches
+              {dict.footer.legal}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><Link href="/privacy" className="text-sm text-gray-500 hover:text-white">Datenschutz</Link></li>
-              <li><Link href="/terms" className="text-sm text-gray-500 hover:text-white">AGB</Link></li>
-              <li><Link href="/legal" className="text-sm text-gray-500 hover:text-white">Impressum</Link></li>
+              <li><Link href="/privacy" className="text-sm text-gray-500 hover:text-white">{dict.footer.privacy}</Link></li>
+              <li><Link href="/terms" className="text-sm text-gray-500 hover:text-white">{dict.footer.terms}</Link></li>
+              <li><Link href="/legal" className="text-sm text-gray-500 hover:text-white">{dict.footer.imprint}</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Kontakt
+              {dict.footer.contact}
             </h3>
             <ul className="mt-3 space-y-2">
               <li><a href="mailto:support@etchify.app" className="text-sm text-gray-500 hover:text-white">support@etchify.app</a></li>
@@ -55,7 +60,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-brand-border pt-6 text-center text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} Valerian Huber. Built by{' '}
+          &copy; {new Date().getFullYear()} {dict.footer.copyright}{' '}
           <a href="https://alpin-code.de" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white">
             Alpin-Code
           </a>

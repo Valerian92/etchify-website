@@ -1,37 +1,28 @@
-const STEPS = [
-  {
-    step: '01',
-    title: 'Produkte einrichten',
-    description: 'Wähle Produkte, weise Materialien und Geometrien zu, aktiviere Tools — alles im Wizard.',
-  },
-  {
-    step: '02',
-    title: 'Kunden designen',
-    description: 'Deine Kunden öffnen den Konfigurator, gestalten ihr Design und legen es in den Warenkorb.',
-  },
-  {
-    step: '03',
-    title: 'Du produzierst',
-    description: 'Lade die Produktionsdatei herunter — SVG für Laser, PNG für Druck. Fertig.',
-  },
-];
+'use client';
+
+import { useLocale } from '@/lib/LocaleProvider';
+
+const STEP_KEYS = ['step1', 'step2', 'step3'] as const;
+const STEP_NUMBERS = ['01', '02', '03'];
 
 export function HowItWorks() {
+  const { dict } = useLocale();
+
   return (
     <section className="border-t border-brand-border py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-3xl font-bold sm:text-4xl">
-          So funktioniert&apos;s
+          {dict.howItWorks.title}
         </h2>
 
         <div className="mt-16 grid gap-12 sm:grid-cols-3">
-          {STEPS.map((s) => (
-            <div key={s.step} className="text-center">
+          {STEP_KEYS.map((key, i) => (
+            <div key={key} className="text-center">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-primary/10 text-2xl font-bold text-brand-primary">
-                {s.step}
+                {STEP_NUMBERS[i]}
               </div>
-              <h3 className="mt-6 text-xl font-semibold">{s.title}</h3>
-              <p className="mt-2 text-gray-400">{s.description}</p>
+              <h3 className="mt-6 text-xl font-semibold">{dict.howItWorks[key].title}</h3>
+              <p className="mt-2 text-gray-400">{dict.howItWorks[key].description}</p>
             </div>
           ))}
         </div>

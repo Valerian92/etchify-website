@@ -41,6 +41,27 @@
       "starter": { "cta": "Get Started" },
       "professional": { "cta": "Get Started" },
       "business": { "cta": "Contact Us" }
+    },
+    "features": {
+      "canvasEditor": "Canvas Editor",
+      "textShapes": "Text & Shapes",
+      "svgExport": "SVG Export",
+      "communitySupport": "Community Support",
+      "allFromFree": "Everything in Free",
+      "imageUpload": "Image Upload",
+      "qrCodes": "QR Codes",
+      "pngExport": "PNG Export",
+      "emailSupport": "Email Support",
+      "allFromStarter": "Everything in Starter",
+      "customerAccounts": "Customer Accounts",
+      "designLinks": "Design Links",
+      "pdfExport": "PDF Export",
+      "prioritySupport": "Priority Support",
+      "allFromProfessional": "Everything in Professional",
+      "unlimitedProducts": "Unlimited Products",
+      "customBranding": "Custom Branding",
+      "apiAccess": "API Access",
+      "dedicatedSupport": "Dedicated Support"
     }
   },
   "footer": {
