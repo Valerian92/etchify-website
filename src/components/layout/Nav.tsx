@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { Logo } from '@/components/ui/Logo';
 
 const NAV_LINKS = [
   { href: '/#features', label: 'Features' },
@@ -18,8 +19,11 @@ export function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          <span className="text-brand-primary">Etch</span>ify
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+          <Logo className="h-7 w-7 text-brand-primary" />
+          <span>
+            <span className="text-brand-primary">Etch</span>ify
+          </span>
         </Link>
 
         {/* Desktop links */}

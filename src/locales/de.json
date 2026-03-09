@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Kontakt",
+    "cta": "Kostenlos starten"
+  },
+  "hero": {
+    "badge": "Shopify App für Gravur & Print Shops",
+    "title1": "Dein Produkt.",
+    "title2": "Ihr Design.",
+    "subtitle": "Kunden gestalten individuelle Gravuren und Drucke direkt in deinem Shop. Du erhältst produktionsfertige Dateien — SVG, PNG oder PDF.",
+    "ctaPrimary": "Kostenlos installieren",
+    "ctaSecondary": "Mehr erfahren",
+    "trust": "Keine Kreditkarte nötig · Free Plan verfügbar · In 5 Minuten eingerichtet"
+  },
+  "features": {
+    "title": "Alles was dein Shop braucht",
+    "subtitle": "Von der Kunden-Gestaltung bis zur fertigen Produktionsdatei — in einer App.",
+    "canvasEditor": { "title": "Canvas Editor", "description": "Drag & Drop Designer mit Text, Bildern, QR-Codes und Formen. Deine Kunden gestalten direkt im Browser." },
+    "engravingPrint": { "title": "Gravur & Druck", "description": "Laser-Gravur, UV-Druck, Sublimation — ein Tool für alle Fertigungsverfahren." },
+    "noCodeSetup": { "title": "No-Code Setup", "description": "7-Step Wizard. Produkte konfigurieren, Materialien zuweisen, Tools aktivieren — ohne eine Zeile Code." },
+    "productionFiles": { "title": "Produktionsdateien", "description": "SVG, PNG, PDF Export. Direkt produktionsfertig für deine Maschinen." }
+  },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "step1": { "title": "Produkte einrichten", "description": "Wähle Produkte, weise Materialien und Geometrien zu, aktiviere Tools — alles im Wizard." },
+    "step2": { "title": "Kunden designen", "description": "Deine Kunden öffnen den Konfigurator, gestalten ihr Design und legen es in den Warenkorb." },
+    "step3": { "title": "Du produzierst", "description": "Lade die Produktionsdatei herunter — SVG für Laser, PNG für Druck. Fertig." }
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Starte kostenlos. Upgrade wenn du wachsen willst.",
+    "popular": "Beliebt",
+    "perMonth": "/Monat",
+    "product": "Produkt",
+    "products": "Produkte",
+    "unlimited": "Unbegrenzt",
+    "plans": {
+      "free": { "cta": "Kostenlos starten" },
+      "starter": { "cta": "Jetzt starten" },
+      "professional": { "cta": "Jetzt starten" },
+      "business": { "cta": "Kontaktieren" }
+    }
+  },
+  "footer": {
+    "tagline": "Gravur & Print Konfigurator für Shopify",
+    "product": "Produkt",
+    "legal": "Rechtliches",
+    "contact": "Kontakt",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "imprint": "Impressum",
+    "copyright": "Valerian Huber. Built by"
+  }
+}

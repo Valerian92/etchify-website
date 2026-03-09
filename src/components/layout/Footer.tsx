@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
   return (
@@ -7,9 +8,12 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <p className="text-lg font-bold">
-              <span className="text-brand-primary">Etch</span>ify
-            </p>
+            <div className="flex items-center gap-2">
+              <Logo className="h-6 w-6 text-brand-primary" />
+              <p className="text-lg font-bold">
+                <span className="text-brand-primary">Etch</span>ify
+              </p>
+            </div>
             <p className="mt-2 text-sm text-gray-500">
               Gravur & Print Konfigurator für Shopify
             </p>
