@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Nav } from '@/components/layout/Nav';
+import { Footer } from '@/components/layout/Footer';
 import './globals.css';
 
 const inter = Inter({
@@ -52,7 +54,9 @@ export default function RootLayout({
   return (
     <html lang="de" className="dark">
       <body className={`${inter.className} bg-brand-dark text-white antialiased`}>
-        {children}
+        <Nav />
+        <main className="pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );
