@@ -35,13 +35,11 @@ export const metadata: Metadata = {
     title: 'Etchify — Gravur & Print Konfigurator für Shopify',
     description:
       'Shopify-App für Gravur & Print Shops. Kunden gestalten — du produzierst.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Etchify — Gravur & Print Konfigurator für Shopify',
     description: 'Shopify-App für Gravur & Print Shops.',
-    images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
 };
