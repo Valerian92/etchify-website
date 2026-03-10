@@ -17,16 +17,37 @@
   "features": {
     "title": "Everything Your Shop Needs",
     "subtitle": "From customer design to production-ready files — in one app.",
-    "canvasEditor": { "title": "Canvas Editor", "description": "Drag & drop designer with text, images, QR codes, and shapes. Your customers design directly in the browser." },
-    "engravingPrint": { "title": "Engraving & Print", "description": "Laser engraving, UV printing, sublimation — one tool for all production methods." },
-    "noCodeSetup": { "title": "No-Code Setup", "description": "7-step wizard. Configure products, assign materials, activate tools — without a single line of code." },
-    "productionFiles": { "title": "Production Files", "description": "SVG, PNG, PDF export. Ready for your machines." }
+    "canvasEditor": {
+      "title": "Canvas Editor",
+      "description": "Drag & drop designer with text, images, QR codes and shapes. Your customers design directly in the browser."
+    },
+    "engravingPrint": {
+      "title": "Engraving & Print",
+      "description": "Laser engraving, UV printing, sublimation — one tool for all production methods."
+    },
+    "noCodeSetup": {
+      "title": "No-Code Setup",
+      "description": "7-step wizard. Configure products, assign materials, activate tools — without a single line of code."
+    },
+    "productionFiles": {
+      "title": "Production Files",
+      "description": "SVG, PNG, PDF export. Ready for your machines."
+    }
   },
   "howItWorks": {
     "title": "How It Works",
-    "step1": { "title": "Set Up Products", "description": "Choose products, assign materials and geometries, activate tools — all in the wizard." },
-    "step2": { "title": "Customers Design", "description": "Your customers open the configurator, create their design, and add it to the cart." },
-    "step3": { "title": "You Produce", "description": "Download the production file — SVG for laser, PNG for print. Done." }
+    "step1": {
+      "title": "Set Up Products",
+      "description": "Choose products, assign materials and geometries, activate tools — all in the wizard."
+    },
+    "step2": {
+      "title": "Customers Design",
+      "description": "Your customers open the configurator, create their design and add it to the cart."
+    },
+    "step3": {
+      "title": "You Produce",
+      "description": "Download the production file — SVG for laser, PNG for print. Done."
+    }
   },
   "pricing": {
     "title": "Simple, Transparent Pricing",

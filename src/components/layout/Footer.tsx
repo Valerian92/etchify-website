@@ -19,7 +19,7 @@ export function Footer() {
                 <span className="text-brand-primary">Etch</span>ify
               </p>
             </div>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-400">
               {dict.footer.tagline}
             </p>
           </div>
@@ -30,8 +30,8 @@ export function Footer() {
               {dict.footer.product}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><Link href="/#features" className="text-sm text-gray-500 hover:text-white">{dict.nav.features}</Link></li>
-              <li><Link href="/pricing" className="text-sm text-gray-500 hover:text-white">{dict.nav.pricing}</Link></li>
+              <li><Link href="/#features" className="text-sm text-gray-400 transition-colors hover:text-white">{dict.nav.features}</Link></li>
+              <li><Link href="/pricing" className="text-sm text-gray-400 transition-colors hover:text-white">{dict.nav.pricing}</Link></li>
             </ul>
           </div>
 
@@ -41,9 +41,9 @@ export function Footer() {
               {dict.footer.legal}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><Link href="/privacy" className="text-sm text-gray-500 hover:text-white">{dict.footer.privacy}</Link></li>
-              <li><Link href="/terms" className="text-sm text-gray-500 hover:text-white">{dict.footer.terms}</Link></li>
-              <li><Link href="/legal" className="text-sm text-gray-500 hover:text-white">{dict.footer.imprint}</Link></li>
+              <li><Link href="/privacy" className="text-sm text-gray-400 transition-colors hover:text-white">{dict.footer.privacy}</Link></li>
+              <li><Link href="/terms" className="text-sm text-gray-400 transition-colors hover:text-white">{dict.footer.terms}</Link></li>
+              <li><Link href="/legal" className="text-sm text-gray-400 transition-colors hover:text-white">{dict.footer.imprint}</Link></li>
             </ul>
           </div>
 
@@ -53,8 +53,8 @@ export function Footer() {
               {dict.footer.contact}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><a href="mailto:support@etchify.app" className="text-sm text-gray-500 hover:text-white">support@etchify.app</a></li>
-              <li><a href="https://alpin-code.de" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-white">alpin-code.de</a></li>
+              <li><a href="mailto:support@etchify.app" className="text-sm text-gray-400 transition-colors hover:text-white">support@etchify.app</a></li>
+              <li><a href="https://alpin-code.de" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 transition-colors hover:text-white">alpin-code.de</a></li>
             </ul>
           </div>
         </div>

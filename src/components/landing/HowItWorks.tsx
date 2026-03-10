@@ -11,7 +11,7 @@ export function HowItWorks() {
   return (
     <section className="border-t border-brand-border py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold sm:text-4xl">
+        <h2 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
           {dict.howItWorks.title}
         </h2>
 
@@ -22,7 +22,7 @@ export function HowItWorks() {
                 {STEP_NUMBERS[i]}
               </div>
               <h3 className="mt-6 text-xl font-semibold">{dict.howItWorks[key].title}</h3>
-              <p className="mt-2 text-gray-400">{dict.howItWorks[key].description}</p>
+              <p className="mt-3 text-base leading-relaxed text-gray-400">{dict.howItWorks[key].description}</p>
             </div>
           ))}
         </div>

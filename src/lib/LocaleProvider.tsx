@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { type Locale, type Dictionary, defaultLocale, getDictionary } from './i18n';
+import { type Locale, type Dictionary, defaultLocale, getDictionary, locales } from './i18n';
 
 type LocaleContextType = {
   locale: Locale;
@@ -22,12 +22,16 @@ function setCookie(name: string, value: string, days = 365) {
   document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=/;SameSite=Lax`;
 }
 
+function isValidLocale(value: string): value is Locale {
+  return value in locales;
+}
+
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
 
   useEffect(() => {
-    const saved = getCookie('locale') as Locale | undefined;
-    if (saved && (saved === 'de' || saved === 'en')) {
+    const saved = getCookie('locale');
+    if (saved && isValidLocale(saved)) {
       setLocaleState(saved);
     }
   }, []);

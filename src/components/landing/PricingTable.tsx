@@ -55,10 +55,10 @@ export function PricingTable() {
   return (
     <section id="pricing" className="py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold sm:text-4xl">
+        <h2 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
           {dict.pricing.title}
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-gray-400">
+        <p className="mx-auto mt-4 max-w-xl text-center text-lg text-gray-400">
           {dict.pricing.subtitle}
         </p>
 
@@ -94,7 +94,7 @@ export function PricingTable() {
 
                 <ul className="mt-6 space-y-2">
                   {plan.featureKeys.map((fk) => (
-                    <li key={fk} className="flex items-start gap-2 text-sm text-gray-400">
+                    <li key={fk} className="flex items-start gap-2 text-sm leading-relaxed text-gray-300">
                       <span className="mt-0.5 text-brand-primary">&#10003;</span>
                       {pf[fk] || fk}
                     </li>

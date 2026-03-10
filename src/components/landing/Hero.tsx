@@ -15,18 +15,18 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
-        <p className="mb-4 inline-block rounded-full border border-brand-border px-4 py-1.5 text-xs font-medium text-brand-primary">
+        <p className="mb-6 inline-block rounded-full border border-brand-primary/30 bg-brand-primary/5 px-5 py-2 text-sm font-medium text-brand-primary">
           {dict.hero.badge}
         </p>
 
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
           {dict.hero.title1}{' '}
           <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
             {dict.hero.title2}
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-300 sm:text-xl">
           {dict.hero.subtitle}
         </p>
 
@@ -35,19 +35,19 @@ export function Hero() {
             href={SHOPIFY_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-brand-primary px-8 py-3 text-base font-semibold text-white shadow-lg shadow-brand-primary/25 transition-all hover:bg-brand-secondary hover:shadow-brand-secondary/25"
+            className="rounded-xl bg-brand-primary px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-primary/25 transition-all hover:bg-brand-secondary hover:shadow-brand-secondary/25"
           >
             {dict.hero.ctaPrimary}
           </a>
           <a
             href="#features"
-            className="rounded-xl border border-brand-border px-8 py-3 text-base font-semibold text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
+            className="rounded-xl border border-brand-border px-8 py-3.5 text-base font-semibold text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
           >
             {dict.hero.ctaSecondary}
           </a>
         </div>
 
-        <p className="mt-6 text-xs text-gray-600">
+        <p className="mt-8 text-sm text-gray-400/70">
           {dict.hero.trust}
         </p>
       </div>

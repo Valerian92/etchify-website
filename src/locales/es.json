@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "features": "Características",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "cta": "Inicio gratuito"
+  },
+  "hero": {
+    "badge": "Shopify app para tiendas de grabado e impresión",
+    "title1": "Tu Producto.",
+    "title2": "Su Diseño.",
+    "subtitle": "Los clientes diseñan grabados e impresiones personalizados directamente en su tienda. Usted recibe archivos listos para producción: SVG, PNG o PDF.",
+    "ctaPrimary": "Instalación gratuita",
+    "ctaSecondary": "Más información",
+    "trust": "No se necesita tarjeta de crédito - Plan gratuito disponible - Configuración en 5 minutos"
+  },
+  "features": {
+    "title": "Todo lo que su tienda necesita",
+    "subtitle": "Desde el diseño del cliente hasta el archivo de producción acabado, en una sola aplicación.",
+    "canvasEditor": {
+      "title": "Editor de lienzos",
+      "description": "Diseñador de arrastrar y soltar con texto, imágenes, códigos QR y formas. Tus clientes diseñan directamente en el navegador."
+    },
+    "engravingPrint": {
+      "title": "Grabado e impresión",
+      "description": "Grabado por láser, impresión UV, sublimación: una sola herramienta para todos los procesos de fabricación."
+    },
+    "noCodeSetup": {
+      "title": "Configuración sin código",
+      "description": "Asistente de 7 pasos. Configure productos, asigne materiales, active herramientas... sin una sola línea de código."
+    },
+    "productionFiles": {
+      "title": "Archivos de producción",
+      "description": "Exportación a SVG, PNG y PDF. Directamente listo para la producción para sus máquinas."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "step1": {
+      "title": "Configurar los productos",
+      "description": "Seleccione productos, asigne materiales y geometrías, active herramientas... todo en el asistente."
+    },
+    "step2": {
+      "title": "Los clientes diseñan",
+      "description": "Sus clientes abren el configurador, crean su diseño y lo colocan en la cesta de la compra."
+    },
+    "step3": {
+      "title": "Usted produce",
+      "description": "Descargue el archivo de producción: SVG para láser, PNG para impresión. Hecho."
+    }
+  },
+  "pricing": {
+    "title": "Precios sencillos y transparentes",
+    "subtitle": "Empieza gratis. Actualiza si quieres crecer.",
+    "popular": "Popular",
+    "perMonth": "/mes",
+    "product": "Producto",
+    "products": "Productos",
+    "unlimited": "Sin límites",
+    "plans": {
+      "free": {
+        "cta": "Inicio gratuito"
+      },
+      "starter": {
+        "cta": "Empezar ahora"
+      },
+      "professional": {
+        "cta": "Empezar ahora"
+      },
+      "business": {
+        "cta": "Contáctanos"
+      }
+    },
+    "features": {
+      "canvasEditor": "Editor de lienzos",
+      "textShapes": "Texto y formularios",
+      "svgExport": "Exportación SVG",
+      "communitySupport": "Apoyo comunitario",
+      "allFromFree": "Todo gratis",
+      "imageUpload": "Carga de imágenes",
+      "qrCodes": "Códigos QR",
+      "pngExport": "Exportación PNG",
+      "emailSupport": "Asistencia por correo electrónico",
+      "allFromStarter": "Todo desde Starter",
+      "customerAccounts": "Cuentas de clientes",
+      "designLinks": "Enlaces de diseño",
+      "pdfExport": "Exportación PDF",
+      "prioritySupport": "Asistencia prioritaria",
+      "allFromProfessional": "Todo de Profesional",
+      "unlimitedProducts": "Productos ilimitados",
+      "customBranding": "Marca personalizada",
+      "apiAccess": "Acceso API",
+      "dedicatedSupport": "Asistencia dedicada"
+    }
+  },
+  "footer": {
+    "tagline": "Configurador de grabado e impresión para Shopify",
+    "product": "Producto",
+    "legal": "Asuntos jurídicos",
+    "contact": "Contacto",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "imprint": "Aviso legal",
+    "copyright": "Valerian Huber. Built by"
+  }
+}
