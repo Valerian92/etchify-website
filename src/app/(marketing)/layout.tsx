@@ -13,8 +13,11 @@ export default function MarketingLayout({
   return (
     <ThemeProvider>
       <LocaleProvider>
+        <a href="#main-content" className="skip-to-content">
+          Zum Inhalt springen
+        </a>
         <Nav />
-        <main className="pt-16">{children}</main>
+        <main id="main-content" className="pt-16">{children}</main>
         <Footer />
       </LocaleProvider>
     </ThemeProvider>

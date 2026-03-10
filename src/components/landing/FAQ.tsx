@@ -46,6 +46,8 @@ export function FAQ() {
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
                 >
                   <span className="text-base font-medium text-brand-text sm:text-lg">
                     {dict.faq[key].question}
@@ -53,6 +55,8 @@ export function FAQ() {
                   <ChevronIcon open={isOpen} />
                 </button>
                 <div
+                  id={`faq-answer-${i}`}
+                  role="region"
                   className={`grid transition-all duration-200 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden">

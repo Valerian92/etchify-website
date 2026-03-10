@@ -20,7 +20,7 @@ export function Nav() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/80 backdrop-blur-lg">
+    <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-brand-text">
@@ -58,6 +58,7 @@ export function Nav() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-brand-text-secondary"
           aria-label="Menu"
+          aria-expanded={mobileOpen}
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {mobileOpen ? (

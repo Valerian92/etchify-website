@@ -63,6 +63,12 @@ export default function RootLayout({
     >
       <html lang="de" className="dark">
         <head>
+          {/* Static inline script to prevent theme flash — no user input, safe from XSS */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var m=document.cookie.match(/(?:^|; )theme=([^;]*)/);if(m&&m[1]==='light'){document.documentElement.classList.replace('dark','light')}}catch(e){}})()`,
+            }}
+          />
           <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
           <link rel="dns-prefetch" href="https://clerk.etchify.app" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
