@@ -38,6 +38,33 @@ html.light {
   --color-brand-text-faint: #9ca3af;
 }
 
+/* Theme-aware prose (legal pages) */
+html.light .prose-invert {
+  --tw-prose-body: var(--color-brand-text-secondary);
+  --tw-prose-headings: var(--color-brand-text);
+  --tw-prose-links: var(--color-brand-primary);
+  --tw-prose-bold: var(--color-brand-text);
+  --tw-prose-counters: var(--color-brand-text-muted);
+  --tw-prose-bullets: var(--color-brand-text-muted);
+  --tw-prose-hr: var(--color-brand-border);
+}
+
+/* Scroll-triggered fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
 ::selection {
   background-color: rgba(129, 140, 248, 0.3);
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from '@/lib/LocaleProvider';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const SHOPIFY_APP_URL = 'https://apps.shopify.com/etchify';
 
@@ -51,9 +52,10 @@ const PLANS: {
 export function PricingTable() {
   const { dict } = useLocale();
   const pf = dict.pricing.features as Record<string, string>;
+  const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="pricing" className="py-24">
+    <section id="pricing" className="py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.pricing.title}

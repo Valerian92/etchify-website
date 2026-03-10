@@ -1,15 +1,17 @@
 'use client';
 
 import { useLocale } from '@/lib/LocaleProvider';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const STEP_KEYS = ['step1', 'step2', 'step3'] as const;
 const STEP_NUMBERS = ['01', '02', '03'];
 
 export function HowItWorks() {
   const { dict } = useLocale();
+  const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section className="border-t border-brand-border py-24">
+    <section className="border-t border-brand-border py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.howItWorks.title}

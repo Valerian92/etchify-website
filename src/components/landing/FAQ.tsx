@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from '@/lib/LocaleProvider';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const FAQ_KEYS = ['whatIsEtchify', 'howSetup', 'shopifyPlans', 'productionMethods', 'freeTrial', 'customization'] as const;
 
@@ -22,9 +23,10 @@ function ChevronIcon({ open }: { open: boolean }) {
 export function FAQ() {
   const { dict } = useLocale();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="faq" className="py-24">
+    <section id="faq" className="py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.faq.title}

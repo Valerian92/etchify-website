@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from '@/lib/LocaleProvider';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const FEATURE_KEYS = [
   { key: 'canvasEditor' as const, icon: '🎨' },
@@ -11,9 +12,10 @@ const FEATURE_KEYS = [
 
 export function Features() {
   const { dict } = useLocale();
+  const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="features" className="py-24">
+    <section id="features" className="py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.features.title}
