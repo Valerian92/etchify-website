@@ -64,6 +64,34 @@
       "dedicatedSupport": "Dedicated Support"
     }
   },
+  "faq": {
+    "title": "Häufige Fragen",
+    "subtitle": "Alles was du über Etchify wissen musst.",
+    "whatIsEtchify": {
+      "question": "Was ist Etchify?",
+      "answer": "Etchify ist eine Shopify-App, mit der deine Kunden Produkte direkt im Shop personalisieren können — Gravuren, Drucke, Texte, Bilder und mehr. Du erhältst produktionsfertige Dateien und kannst sofort loslegen."
+    },
+    "howSetup": {
+      "question": "Wie schnell kann ich Etchify einrichten?",
+      "answer": "In unter 5 Minuten. Unser 7-Step Wizard führt dich durch die Einrichtung — Produkte auswählen, Materialien zuweisen, Tools aktivieren. Kein Code nötig."
+    },
+    "shopifyPlans": {
+      "question": "Welche Shopify-Pläne werden unterstützt?",
+      "answer": "Etchify funktioniert mit allen Shopify-Plänen — Basic, Shopify, Advanced und Plus."
+    },
+    "productionMethods": {
+      "question": "Welche Fertigungsverfahren werden unterstützt?",
+      "answer": "Laser-Gravur, UV-Druck, Sublimation und mehr. Etchify generiert produktionsfertige Dateien in SVG, PNG und PDF — passend für deine Maschinen."
+    },
+    "freeTrial": {
+      "question": "Gibt es einen kostenlosen Plan?",
+      "answer": "Ja! Der Free Plan enthält den Canvas Editor, Text & Formen, SVG Export und Community Support — für 1 Produkt. Keine Kreditkarte nötig."
+    },
+    "customization": {
+      "question": "Kann ich den Konfigurator an mein Shop-Design anpassen?",
+      "answer": "Ja. Etchify passt sich automatisch an dein Shopify-Theme an. Im Business-Plan kannst du zusätzlich Custom Branding nutzen, um den Konfigurator vollständig an deine Marke anzupassen."
+    }
+  },
   "footer": {
     "tagline": "Gravur & Print Konfigurator für Shopify",
     "product": "Produkt",
