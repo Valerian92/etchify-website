@@ -32,6 +32,7 @@ export function Footer() {
             <ul className="mt-3 space-y-2">
               <li><Link href="/#features" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">{dict.nav.features}</Link></li>
               <li><Link href="/pricing" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">{dict.nav.pricing}</Link></li>
+              <li><Link href="/changelog" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">Changelog</Link></li>
             </ul>
           </div>
 
