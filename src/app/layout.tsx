@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     title: 'Etchify — Gravur & Print Konfigurator für Shopify',
     description: 'Shopify-App für Gravur & Print Shops.',
   },
+  alternates: { canonical: 'https://etchify.app' },
   robots: { index: true, follow: true },
 };
 
