@@ -8,11 +8,26 @@
   --color-brand-darker: #0a0812;
   --color-brand-muted: #1a1726;
   --color-brand-border: #2a2538;
+  --color-brand-text: #ffffff;
+  --color-brand-text-secondary: #9ca3af;
+  --color-brand-text-muted: #6b7280;
+  --color-brand-text-faint: #4b5563;
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+html.light {
+  --color-brand-dark: #ffffff;
+  --color-brand-darker: #f9fafb;
+  --color-brand-muted: #f3f4f6;
+  --color-brand-border: #e5e7eb;
+  --color-brand-text: #111827;
+  --color-brand-text-secondary: #4b5563;
+  --color-brand-text-muted: #6b7280;
+  --color-brand-text-faint: #9ca3af;
 }
 
 ::selection {

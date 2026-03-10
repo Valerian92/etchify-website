@@ -55,10 +55,10 @@ export function PricingTable() {
   return (
     <section id="pricing" className="py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.pricing.title}
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-lg text-gray-400">
+        <p className="mx-auto mt-4 max-w-xl text-center text-lg text-brand-text-secondary">
           {dict.pricing.subtitle}
         </p>
 
@@ -85,16 +85,16 @@ export function PricingTable() {
                     {dict.pricing.popular}
                   </span>
                 )}
-                <h3 className="text-lg font-semibold">{plan.name}</h3>
+                <h3 className="text-lg font-semibold text-brand-text">{plan.name}</h3>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-sm text-gray-500">{period}</span>
+                  <span className="text-4xl font-bold text-brand-text">{plan.price}</span>
+                  <span className="text-sm text-brand-text-muted">{period}</span>
                 </div>
                 <p className="mt-2 text-sm text-brand-primary">{products}</p>
 
                 <ul className="mt-6 space-y-2">
                   {plan.featureKeys.map((fk) => (
-                    <li key={fk} className="flex items-start gap-2 text-sm leading-relaxed text-gray-300">
+                    <li key={fk} className="flex items-start gap-2 text-sm leading-relaxed text-brand-text-secondary">
                       <span className="mt-0.5 text-brand-primary">&#10003;</span>
                       {pf[fk] || fk}
                     </li>
@@ -108,7 +108,7 @@ export function PricingTable() {
                   className={`mt-8 block rounded-lg py-2.5 text-center text-sm font-medium transition-colors ${
                     plan.highlighted
                       ? 'bg-brand-primary text-white hover:bg-brand-secondary'
-                      : 'border border-brand-border text-gray-300 hover:border-gray-500 hover:text-white'
+                      : 'border border-brand-border text-brand-text-secondary hover:border-brand-text-muted hover:text-brand-text'
                   }`}
                 >
                   {dict.pricing.plans[plan.key].cta}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Logo } from '@/components/ui/Logo';
 import { LanguageToggle } from '@/components/ui/LanguageToggle';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { useLocale } from '@/lib/LocaleProvider';
 
 const SHOPIFY_APP_URL = 'https://apps.shopify.com/etchify';
@@ -22,7 +23,7 @@ export function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-brand-text">
           <Logo className="h-7 w-7 text-brand-primary" />
           <span>
             <span className="text-brand-primary">Etch</span>ify
@@ -35,11 +36,12 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-400 transition-colors hover:text-white"
+              className="text-sm font-medium text-brand-text-secondary transition-colors hover:text-brand-text"
             >
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
           <LanguageToggle />
           <a
             href={SHOPIFY_APP_URL}
@@ -54,7 +56,7 @@ export function Nav() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-gray-400"
+          className="md:hidden p-2 text-brand-text-secondary"
           aria-label="Menu"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,19 +77,20 @@ export function Nav() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-3 text-gray-400 hover:text-white"
+              className="block py-3 text-brand-text-secondary hover:text-brand-text"
             >
               {link.label}
             </Link>
           ))}
-          <div className="py-3">
+          <div className="flex items-center gap-3 py-3">
+            <ThemeToggle />
             <LanguageToggle />
           </div>
           <a
             href={SHOPIFY_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 block rounded-lg bg-brand-primary px-4 py-2 text-center text-sm font-medium"
+            className="mt-2 block rounded-lg bg-brand-primary px-4 py-2 text-center text-sm font-medium text-white"
           >
             {dict.nav.cta}
           </a>

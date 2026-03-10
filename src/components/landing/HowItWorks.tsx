@@ -11,7 +11,7 @@ export function HowItWorks() {
   return (
     <section className="border-t border-brand-border py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.howItWorks.title}
         </h2>
 
@@ -21,8 +21,8 @@ export function HowItWorks() {
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-primary/10 text-2xl font-bold text-brand-primary">
                 {STEP_NUMBERS[i]}
               </div>
-              <h3 className="mt-6 text-xl font-semibold">{dict.howItWorks[key].title}</h3>
-              <p className="mt-3 text-base leading-relaxed text-gray-400">{dict.howItWorks[key].description}</p>
+              <h3 className="mt-6 text-xl font-semibold text-brand-text">{dict.howItWorks[key].title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-brand-text-secondary">{dict.howItWorks[key].description}</p>
             </div>
           ))}
         </div>

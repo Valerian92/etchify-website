@@ -15,10 +15,10 @@ export function Features() {
   return (
     <section id="features" className="py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.features.title}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-gray-400">
+        <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-brand-text-secondary">
           {dict.features.subtitle}
         </p>
 
@@ -29,8 +29,8 @@ export function Features() {
               className="rounded-2xl border border-brand-border bg-brand-muted/50 p-8 transition-colors hover:border-brand-primary/30"
             >
               <span className="text-4xl">{f.icon}</span>
-              <h3 className="mt-4 text-xl font-semibold">{dict.features[f.key].title}</h3>
-              <p className="mt-3 text-base leading-relaxed text-gray-400">{dict.features[f.key].description}</p>
+              <h3 className="mt-4 text-xl font-semibold text-brand-text">{dict.features[f.key].title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-brand-text-secondary">{dict.features[f.key].description}</p>
             </div>
           ))}
         </div>

@@ -19,14 +19,14 @@ export function Hero() {
           {dict.hero.badge}
         </p>
 
-        <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="text-5xl font-bold tracking-tight text-brand-text sm:text-6xl lg:text-7xl">
           {dict.hero.title1}{' '}
           <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
             {dict.hero.title2}
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-300 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-brand-text-secondary sm:text-xl">
           {dict.hero.subtitle}
         </p>
 
@@ -41,13 +41,13 @@ export function Hero() {
           </a>
           <a
             href="#features"
-            className="rounded-xl border border-brand-border px-8 py-3.5 text-base font-semibold text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
+            className="rounded-xl border border-brand-border px-8 py-3.5 text-base font-semibold text-brand-text-secondary transition-colors hover:border-brand-text-muted hover:text-brand-text"
           >
             {dict.hero.ctaSecondary}
           </a>
         </div>
 
-        <p className="mt-8 text-sm text-gray-400/70">
+        <p className="mt-8 text-sm text-brand-text-muted">
           {dict.hero.trust}
         </p>
       </div>
