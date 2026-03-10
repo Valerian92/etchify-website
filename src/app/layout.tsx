@@ -62,6 +62,11 @@ export default function RootLayout({
       }}
     >
       <html lang="de" className="dark">
+        <head>
+          <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+          <link rel="dns-prefetch" href="https://clerk.etchify.app" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        </head>
         <body className={`${inter.className} bg-brand-dark text-brand-text antialiased`}>
           {children}
         </body>
