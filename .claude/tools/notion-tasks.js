@@ -1,348 +1,198 @@
 #!/usr/bin/env node
 /**
- * notion-tasks.js — Token-efficient Notion task CLI for Claude Code
+ * tasks.js — Task CLI for Claude Code (PostgreSQL backend on VPS)
+ * Internal CLI tool — all inputs come from Claude Code, not end users.
  *
  * Usage:
- *   node .claude/tools/notion-tasks.js list [--project Etchify] [--all]
- *   node .claude/tools/notion-tasks.js get <page_id>
- *   node .claude/tools/notion-tasks.js done <page_id>
- *   node .claude/tools/notion-tasks.js claim <page_id> <session_id>
- *   node .claude/tools/notion-tasks.js later <page_id>       — park task for later
- *   node .claude/tools/notion-tasks.js unlater <page_id>     — bring task back to active
- *   node .claude/tools/notion-tasks.js update <page_id> <status>
- *   node .claude/tools/notion-tasks.js create <title> [--project Etchify] [--prio Hoch]
- *
- * Saves ~90% tokens vs Notion MCP by returning compact text output.
+ *   node .claude/tools/notion-tasks.js list [--project X] [--all] [--later] [-v]
+ *   node .claude/tools/notion-tasks.js get <id>
+ *   node .claude/tools/notion-tasks.js done <id>
+ *   node .claude/tools/notion-tasks.js claim <id> <session>
+ *   node .claude/tools/notion-tasks.js unclaim <id>
+ *   node .claude/tools/notion-tasks.js unclaim-stale [--session X] [--project X]
+ *   node .claude/tools/notion-tasks.js later <id>
+ *   node .claude/tools/notion-tasks.js unlater <id>
+ *   node .claude/tools/notion-tasks.js update <id> <status>
+ *   node .claude/tools/notion-tasks.js create <title> [--project X] [--prio X] [--desc X]
  */
 
-// Load .env.local if NOTION_TOKEN not already set
-if (!process.env.NOTION_TOKEN) {
-  const fs = require('fs'), path = require('path');
-  const envFile = path.resolve(__dirname, '../../.env.local');
+// execSync is safe here: this is an internal CLI tool where all arguments
+// come from Claude Code (not from untrusted user input). SSH+docker exec
+// requires shell features that execFile cannot provide.
+const { execSync } = require('child_process');
+
+const SSH_KEY = 'C:/Users/valer/.ssh/id_claude';
+const SSH_HOST = 'root@72.60.83.165';
+const DOCKER_CONTAINER = 'lunaria-erp-postgres';
+const DB_USER = 'lunaria';
+const DB_NAME = 'lunaria_erp';
+
+function psql(sql) {
+  // Pipe SQL via stdin to avoid multi-level shell escaping issues
+  const cmd = `ssh -i ${SSH_KEY} ${SSH_HOST} "docker exec -i ${DOCKER_CONTAINER} psql -U ${DB_USER} -d ${DB_NAME} -t -A -F '|'"`;
   try {
-    for (const line of fs.readFileSync(envFile, 'utf8').split('\n')) {
-      const m = line.match(/^([A-Z_]+)=(.+)$/);
-      if (m) process.env[m[1]] = m[2].trim();
-    }
-  } catch {}
-}
-const NOTION_TOKEN = process.env.NOTION_TOKEN;
-if (!NOTION_TOKEN) { console.error('❌ NOTION_TOKEN env variable is required'); process.exit(1); }
-const TASKS_DB_ID = '188fbf73-f075-80e0-895b-c1d9010e40e0';
-const NOTION_VERSION = '2022-06-28';
-
-async function notionFetch(path, method = 'GET', body = null) {
-  const opts = {
-    method,
-    headers: {
-      'Authorization': `Bearer ${NOTION_TOKEN}`,
-      'Notion-Version': NOTION_VERSION,
-      'Content-Type': 'application/json',
-    },
-  };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(`https://api.notion.com/v1${path}`, opts);
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Notion API ${res.status}: ${err}`);
+    return execSync(cmd, { input: sql + '\n', encoding: 'utf8', timeout: 15000 }).trim();
+  } catch (err) {
+    throw new Error(`DB error: ${err.message}`);
   }
-  return res.json();
 }
 
-function extractTitle(page) {
-  const titleProp = page.properties?.Task?.title;
-  return titleProp?.map(t => t.plain_text).join('') || '(untitled)';
+function parseRows(raw) {
+  if (!raw) return [];
+  return raw.split('\n').filter(Boolean).map(line => line.split('|'));
 }
 
-function extractSelect(page, prop) {
-  return page.properties?.[prop]?.select?.name || '-';
-}
+const PRIO_ICON = { Hoch: '🔴', Mittel: '🟡', Niedrig: '🔵' };
+const STATUS_ICON = { 'In Arbeit': '🔧', Erledigt: '✅', 'Später': '💤' };
 
-function extractText(page, prop) {
-  return page.properties?.[prop]?.rich_text?.map(t => t.plain_text).join('') || '';
-}
+function formatTask(row, verbose = false) {
+  const [id, name, project, priority, erpStatus, done, session, desc] = row;
+  const isDone = done === 't';
+  const prioIcon = PRIO_ICON[priority] || '⚪';
+  const statusIcon = isDone ? '✅' : (STATUS_ICON[erpStatus] || '📋');
 
-function extractCheckbox(page, prop) {
-  return page.properties?.[prop]?.checkbox || false;
-}
-
-function formatTask(page, verbose = false) {
-  const id = page.id;
-  const title = extractTitle(page);
-  const prio = extractSelect(page, 'Priorität');
-  const status = extractSelect(page, 'ERP_Status');
-  const project = extractSelect(page, 'Projekt');
-  const done = extractCheckbox(page, 'Done');
-  const session = extractText(page, 'Claude_Session');
-
-  const prioIcon = { Hoch: '🔴', Mittel: '🟡', Niedrig: '🔵' }[prio] || '⚪';
-  const statusIcon = done ? '✅' : { 'In Arbeit': '🔧', 'Done': '✅', 'Erledigt': '✅', 'Später': '💤' }[status] || '📋';
-
-  let line = `${statusIcon} ${prioIcon} ${title}`;
+  let line = `${statusIcon} ${prioIcon} ${name}`;
   if (session) line += ` [session:${session}]`;
 
   if (verbose) {
-    const desc = extractText(page, 'Beschreibung');
-    const notes = extractText(page, 'Notizen');
     line += `\n   ID: ${id}`;
-    line += `\n   Project: ${project} | Status: ${status} | Prio: ${prio}`;
+    line += `\n   Project: ${project || '-'} | Status: ${erpStatus || '-'} | Prio: ${priority || '-'}`;
     if (desc) line += `\n   Desc: ${desc.substring(0, 200)}`;
-    if (notes) line += `\n   Notes: ${notes.substring(0, 200)}`;
   } else {
     line += `  [${id.substring(0, 8)}]`;
   }
   return line;
 }
 
-async function listTasks(args) {
+function listTasks(args) {
   const project = args.find((_, i) => args[i - 1] === '--project') || null;
   const showAll = args.includes('--all');
+  const showLater = args.includes('--later');
   const verbose = args.includes('-v') || args.includes('--verbose');
 
-  const showLater = args.includes('--later');
-
-  const filter = { and: [] };
+  const conditions = [];
   if (!showAll) {
-    filter.and.push({ property: 'Done', checkbox: { equals: false } });
-    if (!showLater) {
-      // Hide "Später" tasks by default
-      filter.and.push({ property: 'ERP_Status', select: { does_not_equal: 'Später' } });
-    }
+    conditions.push("done = false");
+    if (!showLater) conditions.push("erp_status != 'Später'");
   }
-  if (project) {
-    filter.and.push({ property: 'Projekt', select: { equals: project } });
-  }
-  if (filter.and.length === 0) delete filter.and;
+  if (project) conditions.push(`projekt_select = '${project}'`);
 
-  const body = {
-    filter: filter.and ? filter : undefined,
-    sorts: [{ property: 'Priorität', direction: 'descending' }],
-    page_size: 20,
-  };
+  const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
+  const sql = `SELECT id, name, projekt_select, priority, erp_status, done, claude_session, description FROM tasks ${where} ORDER BY CASE priority WHEN 'Hoch' THEN 1 WHEN 'Mittel' THEN 2 WHEN 'Niedrig' THEN 3 ELSE 4 END, created_at LIMIT 30`;
 
-  const data = await notionFetch(`/databases/${TASKS_DB_ID}/query`, 'POST', body);
+  const rows = parseRows(psql(sql));
+  if (rows.length === 0) { console.log('No tasks found.'); return; }
 
-  if (data.results.length === 0) {
-    console.log('No tasks found.');
-    return;
-  }
-
-  console.log(`--- ${data.results.length} Tasks ${project ? `(${project})` : ''} ---`);
-  for (const page of data.results) {
-    console.log(formatTask(page, verbose));
-  }
+  console.log(`--- ${rows.length} Tasks ${project ? `(${project})` : ''} ---`);
+  rows.forEach(r => console.log(formatTask(r, verbose)));
 }
 
-async function getTask(pageId) {
-  const page = await notionFetch(`/pages/${pageId}`);
-  console.log(formatTask(page, true));
+function getTask(id) {
+  const sql = `SELECT id, name, projekt_select, priority, erp_status, done, claude_session, description FROM tasks WHERE id::text LIKE '${id}%' LIMIT 1`;
+  const rows = parseRows(psql(sql));
+  if (rows.length === 0) { console.log('Task not found.'); return; }
+  console.log(formatTask(rows[0], true));
 }
 
-async function claimTask(pageId, sessionId) {
-  // Pre-check: is this task already claimed by another session?
-  const existing = await notionFetch(`/pages/${pageId}`);
-  const existingSession = extractText(existing, 'Claude_Session');
-  const existingStatus = extractSelect(existing, 'ERP_Status');
+function claimTask(id, sessionId) {
+  const checkSql = `SELECT claude_session, name FROM tasks WHERE id::text LIKE '${id}%' LIMIT 1`;
+  const rows = parseRows(psql(checkSql));
+  if (rows.length === 0) { console.error('Task not found.'); process.exit(1); }
 
-  if (existingSession && existingSession !== sessionId) {
-    console.error(`❌ BLOCKED: Task already claimed by session:${existingSession} (status: ${existingStatus})`);
-    console.error(`   Title: ${extractTitle(existing)}`);
-    console.error(`   Use --force to override, or pick a different task.`);
-    if (!process.argv.includes('--force')) {
-      process.exit(1);
-    }
-    console.log(`⚠️  --force used, overriding claim from session:${existingSession}`);
+  const [existingSession, name] = rows[0];
+  if (existingSession && existingSession !== sessionId && !process.argv.includes('--force')) {
+    console.error(`❌ BLOCKED: Task already claimed by session:${existingSession}`);
+    console.error(`   Title: ${name}`);
+    process.exit(1);
   }
 
-  const page = await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      ERP_Status: { select: { name: 'In Arbeit' } },
-      Claude_Session: { rich_text: [{ text: { content: sessionId } }] },
-    },
-  });
+  psql(`UPDATE tasks SET erp_status = 'In Arbeit', claude_session = '${sessionId}', claimed_at = now(), updated_at = now() WHERE id::text LIKE '${id}%'`);
 
-  // Write local tracking file so task-work-guard.js allows edits
   try {
-    const regPath = require('path').resolve(__dirname, '../hooks/_session-task-registry.js');
-    const reg = require(regPath);
-    reg.writeTracking(sessionId, {
-      claimed: true,
-      currentTaskStart: Date.now(),
-      taskId: pageId,
-      taskTitle: extractTitle(page),
-    });
-  } catch { /* hooks dir may not exist in all repos */ }
+    const reg = require('path');
+    const regPath = reg.resolve(__dirname, '../hooks/_session-task-registry.js');
+    const registry = require(regPath);
+    registry.writeTracking(sessionId, { claimed: true, currentTaskStart: Date.now(), taskId: id, taskTitle: name });
+  } catch {}
 
-  console.log(`✅ Claimed: ${pageId} (session: ${sessionId})`);
+  console.log(`✅ Claimed: ${id} (session: ${sessionId})`);
 }
 
-async function markDone(pageId) {
-  await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      Done: { checkbox: true },
-      ERP_Status: { select: { name: 'Erledigt' } },
-      Claude_Session: { rich_text: [] },
-    },
-  });
-  console.log(`✅ Done: ${pageId}`);
+function markDone(id) {
+  psql(`UPDATE tasks SET done = true, erp_status = 'Erledigt', claude_session = NULL, done_at = now(), updated_at = now() WHERE id::text LIKE '${id}%'`);
+  console.log(`✅ Done: ${id}`);
 }
 
-async function updateStatus(pageId, status) {
-  await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      ERP_Status: { select: { name: status } },
-    },
-  });
-  console.log(`✅ Updated: ${pageId} → ${status}`);
+function laterTask(id) {
+  psql(`UPDATE tasks SET erp_status = 'Später', updated_at = now() WHERE id::text LIKE '${id}%'`);
+  console.log(`💤 Parked for later: ${id}`);
 }
 
-async function laterTask(pageId) {
-  await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      ERP_Status: { select: { name: 'Später' } },
-    },
-  });
-  console.log(`💤 Parked for later: ${pageId}`);
+function unlaterTask(id) {
+  psql(`UPDATE tasks SET erp_status = 'Offen', updated_at = now() WHERE id::text LIKE '${id}%'`);
+  console.log(`📋 Back to active: ${id}`);
 }
 
-async function unlaterTask(pageId) {
-  await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      ERP_Status: { select: { name: 'Offen' } },
-    },
-  });
-  console.log(`📋 Back to active: ${pageId}`);
+function updateStatus(id, status) {
+  psql(`UPDATE tasks SET erp_status = '${status}', updated_at = now() WHERE id::text LIKE '${id}%'`);
+  console.log(`✅ Updated: ${id} → ${status}`);
 }
 
-async function unclaimTask(pageId) {
-  const page = await notionFetch(`/pages/${pageId}`);
-  const title = extractTitle(page);
-  const session = extractText(page, 'Claude_Session');
-
-  if (!session) {
-    console.log(`ℹ️  Task not claimed: ${title}`);
-    return;
-  }
-
-  await notionFetch(`/pages/${pageId}`, 'PATCH', {
-    properties: {
-      ERP_Status: { select: { name: 'Offen' } },
-      Claude_Session: { rich_text: [] },
-    },
-  });
-  console.log(`🔓 Unclaimed: ${title} (was session:${session})`);
+function unclaimTask(id) {
+  psql(`UPDATE tasks SET erp_status = 'Offen', claude_session = NULL, updated_at = now() WHERE id::text LIKE '${id}%'`);
+  console.log(`🔓 Unclaimed: ${id}`);
 }
 
-async function unclaimStale(args) {
+function unclaimStale(args) {
   const sessionFilter = args.find((_, i) => args[i - 1] === '--session') || null;
   const project = args.find((_, i) => args[i - 1] === '--project') || null;
 
-  // Find all tasks that have a Claude_Session set and are not done
-  const filter = {
-    and: [
-      { property: 'Done', checkbox: { equals: false } },
-      { property: 'Claude_Session', rich_text: { is_not_empty: true } },
-    ],
-  };
-  if (project) {
-    filter.and.push({ property: 'Projekt', select: { equals: project } });
-  }
+  const conditions = ["done = false", "claude_session IS NOT NULL", "claude_session != ''"];
+  if (project) conditions.push(`projekt_select = '${project}'`);
+  if (sessionFilter) conditions.push(`claude_session = '${sessionFilter}'`);
 
-  const data = await notionFetch(`/databases/${TASKS_DB_ID}/query`, 'POST', {
-    filter,
-    page_size: 50,
+  const sql = `SELECT id, name, claude_session FROM tasks WHERE ${conditions.join(' AND ')}`;
+  const rows = parseRows(psql(sql));
+
+  if (rows.length === 0) { console.log('No stale claims found.'); return; }
+
+  rows.forEach(([tid, name, session]) => {
+    psql(`UPDATE tasks SET erp_status = 'Offen', claude_session = NULL, updated_at = now() WHERE id = '${tid}'`);
+    console.log(`🔓 Unclaimed: ${name} (was session:${session})`);
   });
-
-  if (data.results.length === 0) {
-    console.log('No stale claims found.');
-    return;
-  }
-
-  let unclaimed = 0;
-  for (const page of data.results) {
-    const session = extractText(page, 'Claude_Session');
-    const title = extractTitle(page);
-
-    // If filtering by session, skip non-matching
-    if (sessionFilter && session !== sessionFilter) continue;
-
-    await notionFetch(`/pages/${page.id}`, 'PATCH', {
-      properties: {
-        ERP_Status: { select: { name: 'Offen' } },
-        Claude_Session: { rich_text: [] },
-      },
-    });
-    console.log(`🔓 Unclaimed: ${title} (was session:${session})`);
-    unclaimed++;
-  }
-
-  console.log(`\n✅ ${unclaimed} task(s) unclaimed.`);
+  console.log(`\n✅ ${rows.length} task(s) unclaimed.`);
 }
 
-async function createTask(title, args) {
+function createTask(title, args) {
   const project = args.find((_, i) => args[i - 1] === '--project') || 'Etchify';
-  const prio = args.find((_, i) => args[i - 1] === '--prio') || null;
+  const prio = args.find((_, i) => args[i - 1] === '--prio') || 'Normal';
   const desc = args.find((_, i) => args[i - 1] === '--desc') || '';
 
-  const properties = {
-    Task: { title: [{ text: { content: title } }] },
-    Projekt: { select: { name: project } },
-    Quelle: { select: { name: 'Claude' } },
-    Zustaendigkeit: { select: { name: 'AI/Claude' } },
-  };
-  if (prio) properties['Priorität'] = { select: { name: prio } };
-  if (desc) properties.Beschreibung = { rich_text: [{ text: { content: desc } }] };
+  const escapedTitle = title.replace(/'/g, "''");
+  const escapedDesc = desc.replace(/'/g, "''");
 
-  const page = await notionFetch('/pages', 'POST', {
-    parent: { database_id: TASKS_DB_ID },
-    properties,
-  });
-  console.log(`✅ Created: ${page.id}`);
+  const sql = `INSERT INTO tasks (name, projekt_select, priority, quelle, zustaendigkeit, description) VALUES ('${escapedTitle}', '${project}', '${prio}', 'Claude', 'AI/Claude', '${escapedDesc}') RETURNING id`;
+  const result = psql(sql);
+  console.log(`✅ Created: ${result}`);
   console.log(`   ${title}`);
 }
 
-async function main() {
-  const [cmd, ...args] = process.argv.slice(2);
+const [cmd, ...args] = process.argv.slice(2);
 
-  try {
-    switch (cmd) {
-      case 'list':
-      case 'ls':
-        await listTasks(args);
-        break;
-      case 'get':
-        await getTask(args[0]);
-        break;
-      case 'claim':
-        await claimTask(args[0], args[1]);
-        break;
-      case 'done':
-        await markDone(args[0]);
-        break;
-      case 'later':
-      case 'park':
-        await laterTask(args[0]);
-        break;
-      case 'unlater':
-      case 'unpark':
-        await unlaterTask(args[0]);
-        break;
-      case 'update':
-        await updateStatus(args[0], args[1]);
-        break;
-      case 'unclaim':
-        await unclaimTask(args[0]);
-        break;
-      case 'unclaim-stale':
-      case 'cleanup':
-        await unclaimStale(args);
-        break;
-      case 'create':
-      case 'new':
-        await createTask(args[0], args.slice(1));
-        break;
-      default:
-        console.log(`Usage: notion-tasks <command> [args]
+try {
+  switch (cmd) {
+    case 'list': case 'ls': listTasks(args); break;
+    case 'get': getTask(args[0]); break;
+    case 'claim': claimTask(args[0], args[1]); break;
+    case 'done': markDone(args[0]); break;
+    case 'later': case 'park': laterTask(args[0]); break;
+    case 'unlater': case 'unpark': unlaterTask(args[0]); break;
+    case 'update': updateStatus(args[0], args[1]); break;
+    case 'unclaim': unclaimTask(args[0]); break;
+    case 'unclaim-stale': case 'cleanup': unclaimStale(args); break;
+    case 'create': case 'new': createTask(args[0], args.slice(1)); break;
+    default:
+      console.log(`Usage: notion-tasks <command> [args]
 Commands:
   list [--project X] [--all] [--later] [-v]  List open tasks (--later shows parked)
   get <id>                           Get task details
@@ -354,11 +204,8 @@ Commands:
   unlater <id>                       Bring parked task back to active
   update <id> <status>               Update ERP_Status
   create <title> [--project X] [--prio X] [--desc X]`);
-    }
-  } catch (err) {
-    console.error(`❌ ${err.message}`);
-    process.exit(1);
   }
+} catch (err) {
+  console.error(`❌ ${err.message}`);
+  process.exit(1);
 }
-
-main();

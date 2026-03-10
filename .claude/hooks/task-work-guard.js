@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Task-Work-Guard — Blockiert Code-Edits ohne beanspruchten Notion-Task
+ * Task-Work-Guard — Blockiert Code-Edits ohne beanspruchten Task (PostgreSQL VPS)
  * Trigger: PreToolUse (Edit|Write)
  * Project: Etchify (Website)
  */

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Task-Loading Guard — Erzwingt Notion TASKS laden bei Session-Start
+ * Task-Loading Guard — Erzwingt Tasks laden bei Session-Start (PostgreSQL VPS)
  * Trigger: UserPromptSubmit
  * Project: Etchify (Website)
  */

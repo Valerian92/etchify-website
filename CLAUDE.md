@@ -40,3 +40,15 @@ npm run dev          # Development server
 npm run build        # Production build
 npm run lint         # ESLint
 ```
+
+## Infrastructure Tools
+- **Vercel CLI**: `npx vercel` (eingeloggt als valerian92) — Deployments, Domains, Env-Vars
+- **Hostinger MCP**: DNS, Domains, VPS verwalten (global in ~/.claude/.mcp.json)
+- **Task CLI**: `node .claude/tools/notion-tasks.js` — PostgreSQL Tasks via SSH+Docker
+- **Playwright**: Nur wenn MCP/CLI nicht ausreicht oder User mitsehen will
+
+### Tool-Prioritaet
+1. Hostinger MCP fuer DNS/Domain/VPS
+2. Vercel CLI fuer Deployments
+3. SSH fuer VPS-Zugriff
+4. Playwright als letztes Mittel
