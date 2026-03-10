@@ -20,7 +20,7 @@ const PLANS: {
     name: 'Free',
     price: '$0',
     productCount: 1,
-    featureKeys: ['canvasEditor', 'textShapes', 'svgExport', 'communitySupport'],
+    featureKeys: ['canvasEditor', 'textShapes', 'svgExport', 'allModes', 'communitySupport'],
     highlighted: false,
   },
   {
@@ -28,7 +28,7 @@ const PLANS: {
     name: 'Starter',
     price: '$19',
     productCount: 10,
-    featureKeys: ['allFromFree', 'imageUpload', 'qrCodes', 'pngExport', 'emailSupport'],
+    featureKeys: ['allFromFree', 'imageUpload', 'qrCodes', 'freehandDrawing', 'emailSupport'],
     highlighted: false,
   },
   {
@@ -36,7 +36,7 @@ const PLANS: {
     name: 'Professional',
     price: '$49',
     productCount: 50,
-    featureKeys: ['allFromStarter', 'customerAccounts', 'designLinks', 'pdfExport', 'prioritySupport'],
+    featureKeys: ['allFromStarter', 'whiteLabel', 'pdfExport', 'designLinks', 'prioritySupport'],
     highlighted: true,
   },
   {
@@ -44,7 +44,7 @@ const PLANS: {
     name: 'Business',
     price: '$99',
     productCount: null,
-    featureKeys: ['allFromProfessional', 'unlimitedProducts', 'customBranding', 'apiAccess', 'dedicatedSupport'],
+    featureKeys: ['allFromProfessional', 'unlimitedProducts', 'apiAccess', 'multiStore', 'dedicatedSupport'],
     highlighted: false,
   },
 ];
