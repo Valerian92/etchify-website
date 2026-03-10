@@ -13,7 +13,7 @@ export function HowItWorks() {
   return (
     <section className="border-t border-brand-border py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.howItWorks.title}
         </h2>
 

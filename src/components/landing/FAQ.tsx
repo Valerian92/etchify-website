@@ -28,7 +28,7 @@ export function FAQ() {
   return (
     <section id="faq" className="py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.faq.title}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-brand-text-secondary">

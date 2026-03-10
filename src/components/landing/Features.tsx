@@ -17,7 +17,7 @@ export function Features() {
   return (
     <section id="features" className="py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-center text-3xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
+        <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.features.title}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-brand-text-secondary">
@@ -28,7 +28,7 @@ export function Features() {
           {FEATURE_KEYS.map((f) => (
             <div
               key={f.key}
-              className="rounded-2xl border border-brand-border bg-brand-muted/50 p-8 transition-colors hover:border-brand-primary/30"
+              className="rounded-2xl border border-brand-border bg-brand-muted/50 p-8 shadow-sm shadow-black/5 transition-colors hover:border-brand-primary/30"
             >
               <span className="text-4xl">{f.icon}</span>
               <h3 className="mt-4 text-xl font-semibold text-brand-text">{dict.features[f.key].title}</h3>

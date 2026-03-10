@@ -19,7 +19,7 @@ export function Hero() {
           {dict.hero.badge}
         </p>
 
-        <h1 className="text-5xl font-bold tracking-tight text-brand-text sm:text-6xl lg:text-7xl">
+        <h1 className="text-4xl font-bold tracking-tight text-brand-text sm:text-5xl lg:text-7xl">
           {dict.hero.title1}{' '}
           <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
             {dict.hero.title2}
