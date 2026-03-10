@@ -71,32 +71,38 @@ export function Nav() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="border-t border-brand-border bg-brand-dark px-4 pb-4 md:hidden">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-3 text-brand-text-secondary hover:text-brand-text"
+      <div
+        className={`grid transition-all duration-200 ease-in-out md:hidden ${
+          mobileOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="border-t border-brand-border bg-brand-dark px-4 pb-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-brand-text-secondary hover:text-brand-text"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="flex items-center gap-3 py-3">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
+            <a
+              href={SHOPIFY_APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 block rounded-lg bg-brand-primary px-4 py-2 text-center text-sm font-medium text-white"
             >
-              {link.label}
-            </Link>
-          ))}
-          <div className="flex items-center gap-3 py-3">
-            <ThemeToggle />
-            <LanguageToggle />
+              {dict.nav.cta}
+            </a>
           </div>
-          <a
-            href={SHOPIFY_APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 block rounded-lg bg-brand-primary px-4 py-2 text-center text-sm font-medium text-white"
-          >
-            {dict.nav.cta}
-          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
