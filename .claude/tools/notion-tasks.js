@@ -15,6 +15,17 @@
  * Saves ~90% tokens vs Notion MCP by returning compact text output.
  */
 
+// Load .env.local if NOTION_TOKEN not already set
+if (!process.env.NOTION_TOKEN) {
+  const fs = require('fs'), path = require('path');
+  const envFile = path.resolve(__dirname, '../../.env.local');
+  try {
+    for (const line of fs.readFileSync(envFile, 'utf8').split('\n')) {
+      const m = line.match(/^([A-Z_]+)=(.+)$/);
+      if (m) process.env[m[1]] = m[2].trim();
+    }
+  } catch {}
+}
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 if (!NOTION_TOKEN) { console.error('❌ NOTION_TOKEN env variable is required'); process.exit(1); }
 const TASKS_DB_ID = '188fbf73-f075-80e0-895b-c1d9010e40e0';
