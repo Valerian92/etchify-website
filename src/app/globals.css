@@ -19,7 +19,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Smooth theme transition */
+body,
+body * {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
 html.light {
+  --color-brand-primary: #6366f1;
+  --color-brand-secondary: #8b5cf6;
   --color-brand-dark: #ffffff;
   --color-brand-darker: #f9fafb;
   --color-brand-muted: #f3f4f6;
