@@ -9,9 +9,9 @@
   --color-brand-muted: #1a1726;
   --color-brand-border: #2a2538;
   --color-brand-text: #ffffff;
-  --color-brand-text-secondary: #9ca3af;
-  --color-brand-text-muted: #6b7280;
-  --color-brand-text-faint: #4b5563;
+  --color-brand-text-secondary: #b4bcc8;
+  --color-brand-text-muted: #8b95a3;
+  --color-brand-text-faint: #6b7280;
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
@@ -33,9 +33,9 @@ html.light {
   --color-brand-muted: #f3f4f6;
   --color-brand-border: #e5e7eb;
   --color-brand-text: #111827;
-  --color-brand-text-secondary: #4b5563;
-  --color-brand-text-muted: #6b7280;
-  --color-brand-text-faint: #9ca3af;
+  --color-brand-text-secondary: #374151;
+  --color-brand-text-muted: #4b5563;
+  --color-brand-text-faint: #6b7280;
 }
 
 /* Theme-aware prose (legal pages) */
