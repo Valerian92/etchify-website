@@ -53,7 +53,7 @@ export function Footer() {
               {dict.footer.contact}
             </h3>
             <ul className="mt-3 space-y-2">
-              <li><a href="mailto:support@etchify.app" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">support@etchify.app</a></li>
+              <li><a href="mailto:help@etchify.app" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">help@etchify.app</a></li>
               <li><a href="https://alpin-code.de" target="_blank" rel="noopener noreferrer" className="text-sm text-brand-text-secondary transition-colors hover:text-brand-text">alpin-code.de</a></li>
             </ul>
           </div>

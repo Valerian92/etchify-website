@@ -14,7 +14,7 @@ const de: LegalContent = {
       <h2>Angaben gemäß § 5 TMG</h2>
       <p>Valerian Huber<br />Einzelunternehmen<br />Großkarolinenfeld, Deutschland</p>
       <h2>Kontakt</h2>
-      <p>E-Mail: <a href="mailto:support@etchify.app">support@etchify.app</a></p>
+      <p>E-Mail: <a href="mailto:help@etchify.app">help@etchify.app</a></p>
       <h2>Umsatzsteuer-ID</h2>
       <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />DE453549559</p>
       <h2>Verantwortlich für den Inhalt</h2>
@@ -28,7 +28,7 @@ const de: LegalContent = {
       <h1>Datenschutzerklärung</h1>
       <p><strong>Stand:</strong> März 2026</p>
       <h2>1. Verantwortlicher</h2>
-      <p>Valerian Huber<br />Großkarolinenfeld, Deutschland<br />E-Mail: support@etchify.app</p>
+      <p>Valerian Huber<br />Großkarolinenfeld, Deutschland<br />E-Mail: help@etchify.app</p>
       <h2>2. Erhobene Daten</h2>
       <p>Bei der Nutzung unserer App werden folgende Daten verarbeitet:</p>
       <ul>
@@ -42,7 +42,7 @@ const de: LegalContent = {
       <h2>4. Speicherung</h2>
       <p>Design-Daten werden auf Servern in der EU gespeichert (Supabase, Hetzner). Geteilte Design-Links sind standardmäßig 30 Tage gültig.</p>
       <h2>5. Ihre Rechte</h2>
-      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Kontaktieren Sie uns unter support@etchify.app.</p>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Kontaktieren Sie uns unter help@etchify.app.</p>
       <h2>6. Cookies</h2>
       <p>Etchify verwendet keine Tracking-Cookies. Es werden ausschließlich technisch notwendige Cookies für die Session-Verwaltung und Spracheinstellungen eingesetzt.</p>
     </>
@@ -74,7 +74,7 @@ const en: LegalContent = {
       <h2>Information according to § 5 TMG</h2>
       <p>Valerian Huber<br />Sole proprietorship<br />Großkarolinenfeld, Germany</p>
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:support@etchify.app">support@etchify.app</a></p>
+      <p>Email: <a href="mailto:help@etchify.app">help@etchify.app</a></p>
       <h2>VAT ID</h2>
       <p>VAT identification number according to § 27a UStG:<br />DE453549559</p>
       <h2>Responsible for content</h2>
@@ -88,7 +88,7 @@ const en: LegalContent = {
       <h1>Privacy Policy</h1>
       <p><strong>Last updated:</strong> March 2026</p>
       <h2>1. Data Controller</h2>
-      <p>Valerian Huber<br />Großkarolinenfeld, Germany<br />Email: support@etchify.app</p>
+      <p>Valerian Huber<br />Großkarolinenfeld, Germany<br />Email: help@etchify.app</p>
       <h2>2. Data Collected</h2>
       <p>The following data is processed when you use our app:</p>
       <ul>
@@ -102,7 +102,7 @@ const en: LegalContent = {
       <h2>4. Storage</h2>
       <p>Design data is stored on servers in the EU (Supabase, Hetzner). Shared design links are valid for 30 days by default.</p>
       <h2>5. Your Rights</h2>
-      <p>You have the right to information, correction, deletion and restriction of the processing of your data. Contact us at support@etchify.app.</p>
+      <p>You have the right to information, correction, deletion and restriction of the processing of your data. Contact us at help@etchify.app.</p>
       <h2>6. Cookies</h2>
       <p>Etchify does not use tracking cookies. Only technically necessary cookies are used for session management and language settings.</p>
     </>
@@ -134,7 +134,7 @@ const fr: LegalContent = {
       <h2>Informations selon § 5 TMG</h2>
       <p>Valerian Huber<br />Entreprise individuelle<br />Großkarolinenfeld, Allemagne</p>
       <h2>Contact</h2>
-      <p>E-mail : <a href="mailto:support@etchify.app">support@etchify.app</a></p>
+      <p>E-mail : <a href="mailto:help@etchify.app">help@etchify.app</a></p>
       <h2>Numéro de TVA</h2>
       <p>Numéro d{"'"}identification TVA conformément au § 27a UStG :<br />DE453549559</p>
       <h2>Responsable du contenu</h2>
@@ -148,7 +148,7 @@ const fr: LegalContent = {
       <h1>Politique de confidentialité</h1>
       <p><strong>Dernière mise à jour :</strong> Mars 2026</p>
       <h2>1. Responsable</h2>
-      <p>Valerian Huber<br />Großkarolinenfeld, Allemagne<br />E-mail : support@etchify.app</p>
+      <p>Valerian Huber<br />Großkarolinenfeld, Allemagne<br />E-mail : help@etchify.app</p>
       <h2>2. Données collectées</h2>
       <p>Lors de l{"'"}utilisation de notre application, les données suivantes sont traitées :</p>
       <ul>
@@ -162,7 +162,7 @@ const fr: LegalContent = {
       <h2>4. Stockage</h2>
       <p>Les données de design sont stockées sur des serveurs situés dans l{"'"}UE (Supabase, Hetzner). Les liens de design partagés sont valables 30 jours par défaut.</p>
       <h2>5. Vos droits</h2>
-      <p>Vous avez un droit d{"'"}accès, de rectification, d{"'"}effacement et de limitation du traitement de vos données. Contactez-nous à l{"'"}adresse support@etchify.app.</p>
+      <p>Vous avez un droit d{"'"}accès, de rectification, d{"'"}effacement et de limitation du traitement de vos données. Contactez-nous à l{"'"}adresse help@etchify.app.</p>
       <h2>6. Cookies</h2>
       <p>Etchify n{"'"}utilise pas de cookies de suivi. Seuls les cookies techniquement nécessaires à la gestion de la session et aux paramètres de langue sont utilisés.</p>
     </>
@@ -194,7 +194,7 @@ const es: LegalContent = {
       <h2>Información según § 5 TMG</h2>
       <p>Valerian Huber<br />Empresa individual<br />Großkarolinenfeld, Alemania</p>
       <h2>Contacto</h2>
-      <p>E-mail: <a href="mailto:support@etchify.app">support@etchify.app</a></p>
+      <p>E-mail: <a href="mailto:help@etchify.app">help@etchify.app</a></p>
       <h2>Número de identificación fiscal</h2>
       <p>Número de identificación fiscal según § 27a UStG:<br />DE453549559</p>
       <h2>Responsable del contenido</h2>
@@ -208,7 +208,7 @@ const es: LegalContent = {
       <h1>Política de privacidad</h1>
       <p><strong>Última actualización:</strong> Marzo 2026</p>
       <h2>1. Responsable</h2>
-      <p>Valerian Huber<br />Großkarolinenfeld, Alemania<br />E-mail: support@etchify.app</p>
+      <p>Valerian Huber<br />Großkarolinenfeld, Alemania<br />E-mail: help@etchify.app</p>
       <h2>2. Datos recogidos</h2>
       <p>Cuando utiliza nuestra aplicación, se procesan los siguientes datos:</p>
       <ul>
@@ -222,7 +222,7 @@ const es: LegalContent = {
       <h2>4. Almacenamiento</h2>
       <p>Los datos de diseño se almacenan en servidores de la UE (Supabase, Hetzner). Los enlaces de diseño compartidos tienen una validez de 30 días.</p>
       <h2>5. Sus derechos</h2>
-      <p>Tiene derecho a la información, rectificación, supresión y limitación del tratamiento de sus datos. Contacte con nosotros en support@etchify.app.</p>
+      <p>Tiene derecho a la información, rectificación, supresión y limitación del tratamiento de sus datos. Contacte con nosotros en help@etchify.app.</p>
       <h2>6. Cookies</h2>
       <p>Etchify no utiliza cookies de seguimiento. Solo se utilizan las cookies técnicamente necesarias para la gestión de la sesión y la configuración del idioma.</p>
     </>
@@ -254,7 +254,7 @@ const it: LegalContent = {
       <h2>Informazioni ai sensi del § 5 TMG</h2>
       <p>Valerian Huber<br />Ditta individuale<br />Großkarolinenfeld, Germania</p>
       <h2>Contatto</h2>
-      <p>E-mail: <a href="mailto:support@etchify.app">support@etchify.app</a></p>
+      <p>E-mail: <a href="mailto:help@etchify.app">help@etchify.app</a></p>
       <h2>Partita IVA</h2>
       <p>Numero di identificazione IVA ai sensi del § 27a UStG:<br />DE453549559</p>
       <h2>Responsabile del contenuto</h2>
@@ -268,7 +268,7 @@ const it: LegalContent = {
       <h1>Informativa sulla privacy</h1>
       <p><strong>Ultimo aggiornamento:</strong> Marzo 2026</p>
       <h2>1. Responsabile</h2>
-      <p>Valerian Huber<br />Großkarolinenfeld, Germania<br />E-mail: support@etchify.app</p>
+      <p>Valerian Huber<br />Großkarolinenfeld, Germania<br />E-mail: help@etchify.app</p>
       <h2>2. Dati raccolti</h2>
       <p>Quando utilizzate la nostra app, vengono elaborati i seguenti dati:</p>
       <ul>
@@ -282,7 +282,7 @@ const it: LegalContent = {
       <h2>4. Archiviazione</h2>
       <p>I dati di progettazione sono memorizzati su server nell{"'"}UE (Supabase, Hetzner). I link ai disegni condivisi hanno una validità di 30 giorni.</p>
       <h2>5. I vostri diritti</h2>
-      <p>Avete diritto all{"'"}informazione, alla correzione, alla cancellazione e alla limitazione del trattamento dei vostri dati. Contattateci all{"'"}indirizzo support@etchify.app.</p>
+      <p>Avete diritto all{"'"}informazione, alla correzione, alla cancellazione e alla limitazione del trattamento dei vostri dati. Contattateci all{"'"}indirizzo help@etchify.app.</p>
       <h2>6. Cookies</h2>
       <p>Etchify non utilizza cookie di tracciamento. Vengono utilizzati solo i cookie tecnicamente necessari per la gestione della sessione e le impostazioni della lingua.</p>
     </>
