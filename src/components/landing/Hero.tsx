@@ -8,7 +8,7 @@ export function Hero() {
   const { dict } = useLocale();
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
+    <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
       {/* Gradient background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-brand-primary/10 blur-[120px]" />

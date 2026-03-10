@@ -26,7 +26,7 @@ export function FAQ() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="faq" className="py-24" ref={ref} style={{ opacity: 0 }}>
+    <section id="faq" className="py-16 sm:py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.faq.title}
@@ -35,7 +35,7 @@ export function FAQ() {
           {dict.faq.subtitle}
         </p>
 
-        <div className="mt-16 space-y-3">
+        <div className="mt-10 space-y-3 sm:mt-16">
           {FAQ_KEYS.map((key, i) => {
             const isOpen = openIndex === i;
             return (
@@ -45,7 +45,7 @@ export function FAQ() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
                 >
@@ -60,7 +60,7 @@ export function FAQ() {
                   className={`grid transition-all duration-200 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-5 text-base leading-relaxed text-brand-text-secondary">
+                    <p className="px-4 pb-4 text-base leading-relaxed text-brand-text-secondary sm:px-6 sm:pb-5">
                       {dict.faq[key].answer}
                     </p>
                   </div>

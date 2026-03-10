@@ -55,7 +55,7 @@ export function PricingTable() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="pricing" className="py-24" ref={ref} style={{ opacity: 0 }}>
+    <section id="pricing" className="py-16 sm:py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.pricing.title}
@@ -64,7 +64,7 @@ export function PricingTable() {
           {dict.pricing.subtitle}
         </p>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PLANS.map((plan) => {
             const period = plan.key === 'business'
               ? `${dict.pricing.perMonth} + 0.5%`
@@ -83,7 +83,7 @@ export function PricingTable() {
                 }`}
               >
                 {plan.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-primary px-3 py-0.5 text-xs font-semibold">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-primary px-3 py-0.5 text-xs font-semibold text-white">
                     {dict.pricing.popular}
                   </span>
                 )}

@@ -15,7 +15,7 @@ export function Features() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="features" className="py-24" ref={ref} style={{ opacity: 0 }}>
+    <section id="features" className="py-16 sm:py-24" ref={ref} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.features.title}
@@ -24,11 +24,11 @@ export function Features() {
           {dict.features.subtitle}
         </p>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-8 sm:grid-cols-2">
           {FEATURE_KEYS.map((f) => (
             <div
               key={f.key}
-              className="rounded-2xl border border-brand-border bg-brand-muted/50 p-8 shadow-sm shadow-black/5 transition-colors hover:border-brand-primary/30"
+              className="rounded-2xl border border-brand-border bg-brand-muted/50 p-5 shadow-sm shadow-black/5 transition-colors hover:border-brand-primary/30 sm:p-8"
             >
               <span className="text-4xl">{f.icon}</span>
               <h3 className="mt-4 text-xl font-semibold text-brand-text">{dict.features[f.key].title}</h3>
