@@ -1,9 +1,11 @@
+import dynamic from 'next/dynamic';
 import { Hero } from '@/components/landing/Hero';
-import { Features } from '@/components/landing/Features';
-import { HowItWorks } from '@/components/landing/HowItWorks';
-import { PricingTable } from '@/components/landing/PricingTable';
-import { FAQ } from '@/components/landing/FAQ';
 import { JsonLd } from '@/components/ui/JsonLd';
+
+const Features = dynamic(() => import('@/components/landing/Features').then(m => ({ default: m.Features })));
+const HowItWorks = dynamic(() => import('@/components/landing/HowItWorks').then(m => ({ default: m.HowItWorks })));
+const PricingTable = dynamic(() => import('@/components/landing/PricingTable').then(m => ({ default: m.PricingTable })));
+const FAQ = dynamic(() => import('@/components/landing/FAQ').then(m => ({ default: m.FAQ })));
 
 const structuredData = {
   '@context': 'https://schema.org',
