@@ -43,6 +43,7 @@ next-env.d.ts
 .vercel
 .env.local
 .playwright-mcp/
+.claude/hookify.*.local.md
 screenshot-*.png
 *.png
 !src/**/*.png
