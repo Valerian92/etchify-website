@@ -66,27 +66,15 @@ export function Hero() {
                 your-shop.myshopify.com/products/custom-engraving
               </div>
             </div>
-            {/* Screenshot placeholder — replace src with actual screenshot */}
             <div className="relative aspect-[16/9] bg-brand-muted/20">
               <Image
-                src="/hero-preview.webp"
+                src="/screenshots/configurator-full.png"
                 alt="Etchify Konfigurator — Canvas Editor mit Text, Bildern und QR-Codes"
                 fill
                 className="object-cover object-top"
                 priority
                 sizes="(max-width: 768px) 100vw, 896px"
-                onError={(e) => {
-                  // Hide broken image if file doesn't exist yet
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
               />
-              {/* Fallback when no image exists */}
-              <div className="absolute inset-0 flex items-center justify-center text-brand-text-muted">
-                <div className="text-center">
-                  <div className="text-5xl sm:text-6xl">&#9881;</div>
-                  <p className="mt-3 text-sm">Konfigurator Preview</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

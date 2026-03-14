@@ -22,6 +22,14 @@
     "noCodeSetup": { "title": "No-Code Setup", "description": "7-Step Wizard. Produkte konfigurieren, Materialien zuweisen, Tools aktivieren — ohne eine Zeile Code." },
     "productionFiles": { "title": "Produktionsdateien", "description": "SVG, PNG, PDF Export. Direkt produktionsfertig für deine Maschinen." }
   },
+  "showcase": {
+    "title": "Erlebe Etchify in Aktion",
+    "subtitle": "Vom Dashboard bis zum Warenkorb — so sieht dein neuer Workflow aus.",
+    "dashboard": { "title": "Installieren & sofort loslegen", "description": "Das Etchify Dashboard direkt in Shopify. Produkte einrichten, Materialien verwalten, Branding anpassen — alles an einem Ort." },
+    "configurator": { "title": "Deine Kunden designen selbst", "description": "Material wählen, Elemente hinzufügen, auf dem Canvas positionieren — der Konfigurator macht aus Besuchern Gestalter." },
+    "engraving": { "title": "Ergebnis in Echtzeit", "description": "Text eingeben, Schriftart und Größe anpassen — deine Kunden sehen sofort, wie die Gravur auf dem Material aussieht." },
+    "cart": { "title": "Nahtlos in den Checkout", "description": "Das personalisierte Produkt landet mit allen Details im Warenkorb. Gravur, Material, Seite — alles sauber für die Produktion." }
+  },
   "howItWorks": {
     "title": "So funktioniert's",
     "step1": { "title": "Produkte einrichten", "description": "Wähle Produkte, weise Materialien und Geometrien zu, aktiviere Tools — alles im Wizard." },

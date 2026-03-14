@@ -34,6 +34,14 @@
       "description": "Esportazione in SVG, PNG e PDF. Direttamente pronto per la produzione per le vostre macchine."
     }
   },
+  "showcase": {
+    "title": "Scopri Etchify in azione",
+    "subtitle": "Dalla dashboard al carrello — ecco il tuo nuovo flusso di lavoro.",
+    "dashboard": { "title": "Installa e inizia subito", "description": "La dashboard di Etchify direttamente in Shopify. Configura prodotti, gestisci materiali, personalizza il branding — tutto in un unico posto." },
+    "configurator": { "title": "I tuoi clienti progettano da soli", "description": "Scegliere il materiale, aggiungere elementi, posizionare sulla tela — il configuratore trasforma i visitatori in designer." },
+    "engraving": { "title": "Risultati in tempo reale", "description": "Inserire il testo, regolare font e dimensione — i tuoi clienti vedono subito come appare l'incisione sul materiale." },
+    "cart": { "title": "Checkout senza attriti", "description": "Il prodotto personalizzato finisce nel carrello con tutti i dettagli. Incisione, materiale, lato — tutto pronto per la produzione." }
+  },
   "howItWorks": {
     "title": "Come funziona",
     "step1": {

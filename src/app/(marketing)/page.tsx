@@ -3,6 +3,7 @@ import { Hero } from '@/components/landing/Hero';
 import { JsonLd } from '@/components/ui/JsonLd';
 
 const Features = dynamic(() => import('@/components/landing/Features').then(m => ({ default: m.Features })));
+const Showcase = dynamic(() => import('@/components/landing/Showcase').then(m => ({ default: m.Showcase })));
 const HowItWorks = dynamic(() => import('@/components/landing/HowItWorks').then(m => ({ default: m.HowItWorks })));
 const PricingTable = dynamic(() => import('@/components/landing/PricingTable').then(m => ({ default: m.PricingTable })));
 const FAQ = dynamic(() => import('@/components/landing/FAQ').then(m => ({ default: m.FAQ })));
@@ -91,6 +92,7 @@ export default function Home() {
       <JsonLd data={faqSchema} />
       <Hero />
       <Features />
+      <Showcase />
       <HowItWorks />
       <PricingTable />
       <FAQ />

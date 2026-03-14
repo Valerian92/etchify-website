@@ -34,6 +34,14 @@
       "description": "Exportation SVG, PNG, PDF. Directement prêt à la production pour tes machines."
     }
   },
+  "showcase": {
+    "title": "Découvrez Etchify en action",
+    "subtitle": "Du tableau de bord au panier — voici votre nouveau workflow.",
+    "dashboard": { "title": "Installer et démarrer instantanément", "description": "Le tableau de bord Etchify directement dans Shopify. Configurer les produits, gérer les matériaux, personnaliser le branding — tout en un seul endroit." },
+    "configurator": { "title": "Vos clients créent eux-mêmes", "description": "Choisir le matériau, ajouter des éléments, positionner sur le canvas — le configurateur transforme les visiteurs en créateurs." },
+    "engraving": { "title": "Résultats en temps réel", "description": "Saisir le texte, ajuster la police et la taille — vos clients voient instantanément le rendu de la gravure sur le matériau." },
+    "cart": { "title": "Passage en caisse fluide", "description": "Le produit personnalisé arrive dans le panier avec tous les détails. Gravure, matériau, face — tout est prêt pour la production." }
+  },
   "howItWorks": {
     "title": "Comment ça marche",
     "step1": {

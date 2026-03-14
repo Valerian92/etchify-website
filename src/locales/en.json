@@ -34,6 +34,14 @@
       "description": "SVG, PNG, PDF export. Ready for your machines."
     }
   },
+  "showcase": {
+    "title": "See Etchify in Action",
+    "subtitle": "From dashboard to checkout — this is your new workflow.",
+    "dashboard": { "title": "Install & Get Started Instantly", "description": "The Etchify dashboard right inside Shopify. Set up products, manage materials, customize branding — all in one place." },
+    "configurator": { "title": "Your Customers Design Themselves", "description": "Choose material, add elements, position on the canvas — the configurator turns visitors into designers." },
+    "engraving": { "title": "Real-Time Results", "description": "Enter text, adjust font and size — your customers instantly see how the engraving looks on the material." },
+    "cart": { "title": "Seamless Checkout", "description": "The personalized product lands in the cart with all details. Engraving, material, side — everything clean for production." }
+  },
   "howItWorks": {
     "title": "How It Works",
     "step1": {
