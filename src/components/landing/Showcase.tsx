@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import { useLocale } from '@/lib/LocaleProvider';
 import { useScrollReveal } from '@/lib/useScrollReveal';
 
@@ -11,12 +12,44 @@ const ITEMS = [
   { key: 'cart' as const, src: '/screenshots/cart-with-engraving.png', alt: 'Warenkorb mit personalisiertem Gravur-Produkt' },
 ];
 
+function useStaggerReveal() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const items = container.querySelectorAll<HTMLElement>('[data-showcase-item]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = el.dataset.showcaseItem || '0';
+            el.style.transitionDelay = `${delay}ms`;
+            el.classList.add('animate-fade-in-up');
+            el.style.opacity = '';
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return containerRef;
+}
+
 export function Showcase() {
   const { dict } = useLocale();
-  const ref = useScrollReveal<HTMLElement>();
+  const sectionRef = useScrollReveal<HTMLElement>();
+  const staggerRef = useStaggerReveal();
 
   return (
-    <section className="border-t border-brand-border py-16 sm:py-24" ref={ref} style={{ opacity: 0 }}>
+    <section className="border-t border-brand-border py-16 sm:py-24" ref={sectionRef} style={{ opacity: 0 }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-center text-2xl font-bold text-brand-text sm:text-4xl lg:text-5xl">
           {dict.showcase.title}
@@ -25,10 +58,12 @@ export function Showcase() {
           {dict.showcase.subtitle}
         </p>
 
-        <div className="mt-12 space-y-16 sm:mt-20 sm:space-y-24">
+        <div ref={staggerRef} className="mt-12 space-y-16 sm:mt-20 sm:space-y-24">
           {ITEMS.map((item, i) => (
             <div
               key={item.key}
+              data-showcase-item={i * 150}
+              style={{ opacity: 0 }}
               className={`flex flex-col items-center gap-8 sm:gap-12 lg:flex-row ${
                 i % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}

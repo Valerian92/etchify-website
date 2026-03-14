@@ -17,6 +17,7 @@ const structuredData = {
   url: 'https://etchify.app',
   description:
     'Shopify-App für Gravur & Print Shops. Kunden gestalten Designs im Browser — du produzierst.',
+  screenshot: 'https://etchify.app/screenshots/configurator-full.png',
   offers: [
     { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
     { '@type': 'Offer', price: '19', priceCurrency: 'USD', name: 'Starter' },
